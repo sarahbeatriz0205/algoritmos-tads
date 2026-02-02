@@ -27,9 +27,28 @@ void selecao(int a[],  unsigned int t){ // Desempenho: O(n²)
     }
 }
 
-/* TODO: Implementar função */
 void insercao(int a[], unsigned int t){
-   
+   int i, j, aux;
+   for (i = 0; i < (t-1); i++){
+      if (a[i] > a[i+1]){
+        aux = a[i+1]; // auxiliar
+
+        // exemplo a[2, 1]
+        a[i+1] = a[i]; // a[2, 2]
+        a[i] = aux; // a[1, 2]
+        j = i-1;
+        while (j >= 0){ // decrementação
+            if (aux < a[j]){
+                a[j+1] = a[j];
+                a[j] = aux;
+            } 
+            else{
+                break;
+            }
+            j = j--;
+        }
+      }    
+   }
 }
 
 
@@ -72,4 +91,3 @@ void merge(int a[], int i1, int j1, int i2, int j2){
     }
     delete[] temp;
 }
-
